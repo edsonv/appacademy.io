@@ -15,7 +15,7 @@ class Startup
   end
 
   def >(other_startup)
-    if @funding > other_startup.funding
+    if self.funding > other_startup.funding
       return true
     end
 
