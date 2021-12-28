@@ -1,0 +1,63 @@
+/* PHASE 3: Forms */
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form > .form-fieldset {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 80%
+}
+
+.form > .form-fieldset > .input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form > .form-fieldset > .input > label {
+  font-weight: 600;
+}
+
+.form > .form-fieldset > .input > input,
+.form > .form-fieldset > .input > textarea {
+  background: #fff;
+  padding: 10px 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form > .form-fieldset > .input > input:focus,
+.form > .form-fieldset > .input > textarea:focus {
+  border-color: #0c0;
+}
+
+.form > .form-fieldset > .submit > button[type="submit"] {
+  padding: 10px 10px;
+  background: #0c0;
+  border-radius: 5px;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 3px solid #070;
+}
+
+.form > .form-fieldset > .submit > button[type="submit"]:hover,
+.form > .form-fieldset > .submit > button[type="submit"]:active {
+  background: #070;
+}
+
+
+.form > .form-fieldset > .submit > button[type="reset"] {
+  font-weight: 700;
+}
+
+.form > .form-fieldset > .submit > button[type="reset"]:hover,
+.form > .form-fieldset > .submit > button[type="reset"]:active {
+  color: #f00;
+}

@@ -1,0 +1,39 @@
+/* PHASE 0: Sidebar */
+.content-sidebar > .profile-picture {
+  display: block;
+  margin-top: -120px;
+  position: relative;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.content-sidebar > .profile-info {
+  margin: 20px 0;
+}
+
+.content-sidebar > .profile-info > h2 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.content-sidebar > .profile-info > p {
+  margin: 20px 0;
+}
+
+.content-sidebar > .profile-nav {
+  margin: 20px 0;
+}
+
+.content-sidebar > .profile-nav > .link:first-child {
+  border-top: 1px solid #ccc;
+}
+
+.content-sidebar > .profile-nav > .link {
+  border-bottom: 1px solid #ccc;
+}
+
+.content-sidebar > .profile-nav > .link > a {
+  font-weight: 700;
+  padding: 5px;
+  display: block;
+}

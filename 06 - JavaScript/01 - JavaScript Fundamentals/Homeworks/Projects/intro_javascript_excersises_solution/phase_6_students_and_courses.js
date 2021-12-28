@@ -1,10 +1,10 @@
-function Student (fname, lname) {
+function Student(fname, lname) {
   this.fname = fname;
   this.lname = lname;
   this.courses = [];
 }
 
-Student.prototype.name = function () {
+Student.prototype.enrollStudent.prototype.name = function () {
   return `${this.fname} ${this.lname}`;
 };
 
@@ -33,7 +33,7 @@ Student.prototype.courseLoad = function () {
   return courseLoad;
 };
 
-function Course (name, department, credits, days, block) {
+function Course(name, department, credits, days, block) {
   this.name = name;
   this.department = department;
   this.credits = credits;
@@ -52,7 +52,7 @@ Course.prototype.addStudent = function (student) {
 Course.prototype.conflictsWith = function (other) {
   if (this.block !== other.block) { return false; }
 
-  return this.days.some(day => other.days.indexOf(day) !== -1 );
+  return this.days.some(day => other.days.indexOf(day) !== -1);
 };
 
 //Comment in the code below to run

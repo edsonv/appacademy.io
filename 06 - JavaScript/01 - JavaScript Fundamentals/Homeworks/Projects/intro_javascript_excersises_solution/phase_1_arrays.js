@@ -1,5 +1,5 @@
 // Array.prototype.uniq
-Array.prototype.uniq = function() {
+Array.prototype.uniq = function () {
   let uniqueArray = [];
 
   for (let i = 0; i < this.length; i++) {
@@ -12,7 +12,7 @@ Array.prototype.uniq = function() {
 };
 
 // alternate solution using 'forEach'
-Array.prototype.uniq2 = function() {
+Array.prototype.uniq2 = function () {
   let uniqueArray = [];
 
   // here we are using Array#forEach with a callback that is
@@ -29,7 +29,7 @@ Array.prototype.uniq2 = function() {
 console.log([1, 1, 2, 2, 3, 3, 4, 4, 5, 5].uniq());
 
 // Array#twoSum
-Array.prototype.twoSum = function() {
+Array.prototype.twoSum = function () {
   const pairs = [];
 
   for (let i = 0; i < this.length; i++) {
@@ -45,7 +45,7 @@ Array.prototype.twoSum = function() {
 
 // This time we've reduced the time complexity from N^2 to N
 // by using a hash
-Array.prototype.twoSum2 = function() {
+Array.prototype.twoSum2 = function () {
   let pairs = [];
   const indexHash = {};
 
@@ -68,7 +68,7 @@ Array.prototype.twoSum2 = function() {
 console.log([-1, 0, 2, -2, 1].twoSum());
 
 // Array#transpose
-Array.prototype.transpose = function() {
+Array.prototype.transpose = function () {
 
   // this creates the empty transposed array
   // just a neat trick to avoid iterating
