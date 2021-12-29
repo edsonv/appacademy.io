@@ -1,5 +1,5 @@
 // DON'T TOUCH THIS CODE
-if (typeof window === 'undefined'){
+if (typeof window === 'undefined') {
   var Piece = require("./piece");
 }
 // DON'T TOUCH THIS CODE
@@ -28,14 +28,14 @@ function _makeGrid() {
 /**
  * Constructs a Board with a starting grid set up.
  */
-function Board () {
+function Board() {
   this.grid = _makeGrid();
 }
 
 Board.DIRS = [
-  [ 0,  1], [ 1,  1], [ 1,  0],
-  [ 1, -1], [ 0, -1], [-1, -1],
-  [-1,  0], [-1,  1]
+  [0, 1], [1, 1], [1, 0],
+  [1, -1], [0, -1], [-1, -1],
+  [-1, 0], [-1, 1]
 ];
 
 /**
@@ -93,7 +93,7 @@ Board.prototype._positionsToFlip = function (pos, color, dir, piecesToFlip) {
     piecesToFlip.push(pos);
   }
   let nextPos = [pos[0] + dir[0], pos[1] + dir[1]];
-  
+
   if (!this.isValidPos(nextPos)) {
     return [];
   } else if (!this.isOccupied(nextPos)) {
@@ -103,7 +103,7 @@ Board.prototype._positionsToFlip = function (pos, color, dir, piecesToFlip) {
   } else {
     return this._positionsToFlip(nextPos, color, dir, piecesToFlip);
   }
-}
+};
 
 /**
  * Checks that a position is not already occupied and that the color
@@ -114,15 +114,15 @@ Board.prototype.validMove = function (pos, color) {
   if (this.isOccupied(pos)) {
     return false;
   }
-  
+
   for (let i = 0; i < Board.DIRS.length; i++) {
     const piecesToFlip =
-    this._positionsToFlip(pos, color, Board.DIRS[i]);
+      this._positionsToFlip(pos, color, Board.DIRS[i]);
     if (piecesToFlip.length) {
       return true;
     }
   }
-  
+
   return false;
 };
 
@@ -205,7 +205,7 @@ Board.prototype.print = function () {
 };
 
 // DON'T TOUCH THIS CODE
-if (typeof window === 'undefined'){
+if (typeof window === 'undefined') {
   module.exports = Board;
 }
 // DON'T TOUCH THIS CODE
