@@ -92,7 +92,7 @@ Board.prototype._positionsToFlip = function (pos, color, dir, piecesToFlip) {
     piecesToFlip.push(pos);
   }
 
-  let nextPos = [pos[0] + dir[0], pos[1] + dir[0]];
+  let nextPos = [pos[0] + dir[0], pos[1] + dir[1]];
 
   if (!this.isValidPos(nextPos)) {
     return [];
