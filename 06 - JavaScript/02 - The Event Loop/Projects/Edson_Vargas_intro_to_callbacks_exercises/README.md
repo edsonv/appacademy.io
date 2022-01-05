@@ -143,18 +143,19 @@ absurdBubbleSort([3, 2, 1], function(arr) {
   reader.close();
 });
 ~~~
-Function Calling
 
-Write your own myBind(context) method. Add it to Function.prototype. You'll want to:
+## **Function Calling**
 
-    Return an arrow function.
-    The arrow function captures this and context.
-    In the anonymous function, call Function.prototype.apply on this, passing the context.
+Write your own `myBind(context)` method. Add it to `Function.prototype`. You'll want to:
+
+1. Return an arrow function.
+2. The arrow function captures `this` and `context`.
+4. In the anonymous function, call `Function.prototype.apply` on `this`, passing the `context`.
 
 Assume the method you're binding doesn't take any arguments; we'll see tomorrow how to use the rest and spread operators to fix this.
 
 How would you test your "bind" method out? Try out this example code:
-
+~~~javascript
 class Lamp {
   constructor() {
     this.name = "a lamp";
@@ -174,22 +175,23 @@ const myBoundTurnOn = turnOn.myBind(lamp);
 
 boundTurnOn(); // should say "Turning on a lamp"
 myBoundTurnOn(); // should say "Turning on a lamp"
+~~~
 
-myThrottle and myDebounce
-myThrottle
+## **`myThrottle` and `myDebounce`**
+###`myThrottle`
 
-Suppose we want to limit how frequently a function can be called. A throttle function allows us to specify a minimum time interval that must pass between invocations. This can be especially useful if the function does something computationally expensive. It is also sometimes used for games to limit how often a player can trigger some event.
+Suppose we want to limit how frequently a function can be called. A `throttle` function allows us to specify a minimum time interval that must pass between invocations. This can be especially useful if the function does something computationally expensive. It is also sometimes used for games to limit how often a player can trigger some event.
 
-Write your own myThrottle(interval) function on the Function.prototype. myThrottle should take an interval as an argument and return a "throttled" version of the original function that can only be invoked every interval milliseconds. In order to accomplish this, declare a variable, tooSoon, outside of the scope of the returned function. Your returned function should close over the tooSoon variable and:
+Write your own `myThrottle(interval)` function on the `Function.prototype`. `myThrottle` should take an interval as an argument and return a "throttled" version of the original function that can only be invoked every `interval` milliseconds. In order to accomplish this, declare a variable, `tooSoon`, outside of the scope of the returned function. Your returned function should close over the `tooSoon` variable and:
 
-    do nothing if tooSoon is true
-    if tooSoon is false:
-        set tooSoon to true
-        use setTimeout to set tooSoon back to false after interval milliseconds
-        invoke the original function with the original arguments.
+- do nothing if `tooSoon` is true
+- if `tooSoon` is false:
+  - set `tooSoon` to true
+  - use `setTimeout` to set `tooSoon` back to false after `interval` milliseconds
+  - invoke the original function with the original arguments.
 
 Once you think you have it working, try the following example code:
-
+~~~javascript
 class Neuron {
   fire() {
     console.log("Firing!");
@@ -234,13 +236,13 @@ class Neuron {
     console.log("Firing!");
   }
 }
+~~~
+### `myDebounce`
 
-myDebounce
+Like `myThrottle`, a debounce function is another way of restricting function invocations. In a `debounced` function, the specified interval represents how much time must pass **without** the debounced function being invoked, before the original function is invoked automatically. Essentially, each time the debounced function is invoked, it resets a countdown (`setTimeout`). If the countdown completes before the debounced function is invoked again, it will invoke the original function. To better understand debounced functions, consider the following example:
 
-Like myThrottle, a debounce function is another way of restricting function invocations. In a debounced function, the specified interval represents how much time must pass without the debounced function being invoked, before the original function is invoked automatically. Essentially, each time the debounced function is invoked, it resets a countdown (setTimeout). If the countdown completes before the debounced function is invoked again, it will invoke the original function. To better understand debounced functions, consider the following example:
-
-We have a SearchBar class that stores a query string. Every time the user calls SearchBar#type with a letter, the new letter is added to the query, and the search function is invoked to "search" for the query:
-
+We have a SearchBar class that stores a `query` string. Every time the user calls `SearchBar#type` with a letter, the new letter is added to the query, and the search function is invoked to "search" for the query:
+~~~javascript
 class SearchBar {
   constructor() {
     this.query = "";
@@ -258,9 +260,9 @@ class SearchBar {
     console.log(`searching for ${this.query}`);
   }
 }
-
+~~~
 Below, we create a new SearchBar, and write a function that will "type" all of the characters in the string "hello world". Test out the following code:
-
+~~~javascript
 const searchBar = new SearchBar();
 
 const queryForHelloWorld = () => {
@@ -278,21 +280,22 @@ const queryForHelloWorld = () => {
 };
 
 queryForHelloWorld();
+~~~
+When we run the `queryForHelloWorld` function, we "type" each character in the string "hello world", and execute a new search every time a new character is added. This is a good way to show "live" results to our user (they don't have to press enter or click a button), but executing a search every time can be incredibly inefficient. A much better solution would be to execute a search whenever we think the user has stopped (or paused) typing. A common way to achieve this functionality is by making a `debounced` version of our function:
 
-When we run the queryForHelloWorld function, we "type" each character in the string "hello world", and execute a new search every time a new character is added. This is a good way to show "live" results to our user (they don't have to press enter or click a button), but executing a search every time can be incredibly inefficient. A much better solution would be to execute a search whenever we think the user has stopped (or paused) typing. A common way to achieve this functionality is by making a debounced version of our function:
+- `Function#myDebounce` accepts an `interval` as an argument and returns a "debounced" function
+- when the debounced function is invoked, it sets a timeout that will invoke the original function after `interval` milliseconds have elapsed
+- if the debounced function is invoked early, it resets the timeout
 
-    Function#myDebounce accepts an interval as an argument and returns a "debounced" function
-    when the debounced function is invoked, it sets a timeout that will invoke the original function after interval milliseconds have elapsed
-    if the debounced function is invoked early, it resets the timeout
-
-Write your own myDebounce function on the Function.prototype. It should take an interval as an argument and return a "debounced" version of the original function. Using Function#myDebounce, we should be able to make SearchBar#search only execute once it hasn't been executed for at least 500ms:
-
+Write your own `myDebounce` function on the `Function.prototype`. It should take an `interval` as an argument and return a "debounced" version of the original function. Using `Function#myDebounce`, we should be able to make `SearchBar#search` only execute once it **hasn't** been executed for at least 500ms:
+~~~javascript
 // Assign searchBar.search to the returned debounced version
 searchBar.search = searchBar.search.myDebounce(500);
+~~~
+Try running the `queryForHelloWorld` function again. This time, you should only see the search for the last query. This is because every subsequent call to the debounced search function resets the timeout - only the last call will end up being invoked. In effect, we've prevented any wasteful searches by only searching once the user stops "typing" for at least 500ms!
 
-Try running the queryForHelloWorld function again. This time, you should only see the search for the last query. This is because every subsequent call to the debounced search function resets the timeout - only the last call will end up being invoked. In effect, we've prevented any wasteful searches by only searching once the user stops "typing" for at least 500ms!
-Bonus II
+# **Bonus II**
 
 *** Please complete the rest of the projects for the day before proceeding.
 
-Go back and refactor the asynchronous exercises to use ES6 Promises.
+Go back and refactor the asynchronous exercises to use [ES6 Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
