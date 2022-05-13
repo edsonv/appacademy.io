@@ -7,17 +7,18 @@ The solution is available [here](https://aao-alpha.s3-us-west-1.amazonaws.com/as
 ## **Phase 1: Modest problems.**
 ### **duos**
 
-Write a method duos that accepts a string as an argument and returns the count of the number of times the same character appears consecutively in the given string.
+Write a method `duos` that accepts a string as an argument and returns the count of the number of times the same character appears consecutively in the given string.
 
 Examples
-
+~~~ruby
 p duos('bootcamp')      # 1
 p duos('wxxyzz')        # 2
 p duos('hoooraay')      # 3
 p duos('dinosaurs')     # 0
 p duos('e')             # 0
+~~~
 
-sentence_swap
+### **sentence_swap**
 
 Write a method sentence_swap that accepts a sentence and a hash as arguments. The method should return a new sentence where every word is replaced with it's corresponding value in the hash. If a word does not exist as a key of the hash, then it should remain unchanged.
 
