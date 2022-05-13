@@ -83,16 +83,13 @@ Write a method `energetic_encoding` that accepts a string and a hash as argument
 
 Examples
 ~~~ruby
-p energetic_encoding('sent sea',
-    'e'=>'i', 's'=>'z', 'n'=>'m', 't'=>'p', 'a'=>'u'
+p energetic_encoding('sent sea', 'e'=>'i', 's'=>'z', 'n'=>'m', 't'=>'p', 'a'=>'u'
 ) # 'zimp ziu'
 
-p energetic_encoding('cat',
-    'a'=>'o', 'c'=>'k'
+p energetic_encoding('cat', 'a'=>'o', 'c'=>'k'
 ) # 'ko?'
 
-p energetic_encoding('hello world',
-    'o'=>'i', 'l'=>'r', 'e'=>'a'
+p energetic_encoding('hello world', 'o'=>'i', 'l'=>'r', 'e'=>'a'
 ) # '?arri ?i?r?'
 
 p energetic_encoding('bike', {}) # '????'
