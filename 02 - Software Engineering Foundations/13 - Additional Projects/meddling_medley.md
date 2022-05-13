@@ -3,8 +3,9 @@
 This problem set will test your knowledge about the last few topics you explored. Like usual, the difficulty will ramp up as work through the set. Ready? Let's do it.
 
 The solution is available [here](https://aao-alpha.s3-us-west-1.amazonaws.com/assets/topics/additional_problems/meddling_medley_solution.rb.zip), but please do not look at it until you have attempted all of the problems!
-Phase 1: Modest problems.
-duos
+
+## **Phase 1: Modest problems.**
+### **duos**
 
 Write a method duos that accepts a string as an argument and returns the count of the number of times the same character appears consecutively in the given string.
 
