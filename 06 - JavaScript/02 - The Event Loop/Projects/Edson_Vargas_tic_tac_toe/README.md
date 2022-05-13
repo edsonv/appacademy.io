@@ -15,10 +15,10 @@ Let's write a Tic-Tac-Toe game!
 - Write a `Game` class in `ttt/game.js`. You'll want to require your `ttt/board.js` file.
 - Write the `Game` constructor such that it takes a reader interface as an argument. As in the previous exercise, write a `run` method that takes in both this reader and a completion callback (`Game.prototype.run(reader, completionCallback)`).
 - Copy your `playScript.js` from [Hanoi Node](https://assets.aaonline.io/fullstack/javascript/projects/ttt_node/solution.zip). It should work for Tic Tac Toe as well.
-    Build a HumanPlayer and ComputerPlayer that should have the same API; they should have the same set of public methods. This means they should be interchangeable.
+- Build a `HumanPlayer` and `ComputerPlayer` that should have the same API; they should have the same set of public methods. This means they should be interchangeable.
 
-        Your Game class should be passed two player objects on instantiation; because both player classes have the same API, the game should not know nor care what kind of players it is given.
+  - Your `Game` class should be passed two player objects on instantiation; because both player classes have the same API, the game should not know nor care what kind of players it is given.
 
-Bonus
+## **Bonus**
 
-    Build an AI for your game. Try to make it unbeatable.
+- Build an AI for your game. Try to make it unbeatable.
