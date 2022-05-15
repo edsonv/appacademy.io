@@ -1,19 +1,11 @@
 class Board {
-  won() {
+  won() {}
 
-  }
+  winner() {}
 
-  winner() {
+  empty(pos) {}
 
-  }
-
-  empty(pos) {
-
-  }
-
-  place_mark(pos, mark) {
-
-  }
+  place_mark(pos, mark) {}
 }
 
 module.exports = Board;

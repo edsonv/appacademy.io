@@ -1,12 +1,8 @@
-const Board = require("./board.js");
-const readline = require("readline");
+const Board = require('./board.js');
+const readline = require('readline');
 
 class Game {
-  constructor(reader) {
+  constructor() {}
 
-  }
-
-  run(reader, completioncallback) {
-
-  }
+  run(reader, completioncallback) {}
 }
