@@ -24,6 +24,8 @@ class TodoBoard
       @list.print_priority
     when "print"
       args.empty? ? @list.print : @list.print_full_item(args[0].to_i)
+    when "toggle"
+      @list[target].add_item(*args)
     when "quit"
       return false
     else
