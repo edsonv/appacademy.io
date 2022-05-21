@@ -8,11 +8,6 @@ class Board
     @grid[row][col]
   end
 
-  def []=(pos, val)
-    row, col = pos
-    @grid[row][col] = val
-  end
-
   def valid?(pos)
     row, col = pos
     pos.all? { |i| 0 <= i && i < @grid.length }
