@@ -16,7 +16,7 @@
     "url": "https://github.com/edsonv/appacademy.io/issues"
   },
   "homepage": "https://github.com/edsonv/appacademy.io#readme",
-  "dependencies": {
+  "devDependencies": {
     "@prettier/plugin-ruby": "^3.1.1",
     "prettier": "^2.6.2"
   }
