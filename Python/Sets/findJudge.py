@@ -1,0 +1,2 @@
+def findJudge(n, trust):
+    
