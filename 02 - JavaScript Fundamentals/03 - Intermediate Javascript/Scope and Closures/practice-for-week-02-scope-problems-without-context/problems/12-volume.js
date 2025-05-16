@@ -24,7 +24,23 @@ console.log(table2(75)); // STILL prints 6
 
 ***********************************************************************/
 function recVolume(height) {
-  // Your code here
+  let width, length, volume;
+  let count = 0;
+
+  return function collectDimensions(value) {
+    if (volume !== undefined) return volume;
+
+    if (count === 0) {
+      width = value;
+    } else if (count === 1) {
+      length = value;
+      volume = height * width * length;
+    }
+
+    count++;
+
+    return volume !== undefined ? volume : collectDimensions;
+  };
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/

@@ -24,6 +24,11 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 
 function lazyAdder(firstNum) {
   // Your code here
+  return (secondNum) => {
+    return (thirdNum) => {
+      return firstNum + secondNum + thirdNum;
+    };
+  };
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
