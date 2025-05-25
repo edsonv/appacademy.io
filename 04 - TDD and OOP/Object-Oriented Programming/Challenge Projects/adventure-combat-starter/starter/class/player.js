@@ -1,6 +1,7 @@
 const { Character } = require('./character');
 const { Enemy } = require('./enemy');
 const { Food } = require('./food');
+const { World } = require('./world');
 
 class Player extends Character {
   constructor(name, startingRoom) {
@@ -66,6 +67,12 @@ class Player extends Character {
 
   hit(name) {
     // Fill this in
+
+    const enemy = this.currentRoom
+      .getEnemies()
+      .filter((enemy) => enemy.name === name)[0];
+
+    enemy.applyDamage(this.strength);
   }
 
   die() {
