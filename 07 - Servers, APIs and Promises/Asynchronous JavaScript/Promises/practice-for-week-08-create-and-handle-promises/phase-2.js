@@ -6,8 +6,8 @@ function stretch(timeLeft) {
       reject("Error: you don't have enough time to stretch");
     } else {
       setTimeout(() => {
-        resolve(timeLeft - 1000);
         console.log('done stretching');
+        resolve(timeLeft - 1000);
       }, 1000);
     }
   });
@@ -21,8 +21,8 @@ function runOnTreadmill(timeLeft) {
       reject("Error: you don't have enough time to run on treadmill");
     } else {
       setTimeout(() => {
-        resolve(timeLeft - 500);
         console.log('done running on treadmill');
+        resolve(timeLeft - 500);
       }, 500);
     }
   });
@@ -36,8 +36,8 @@ function liftWeights(timeLeft) {
       if (timeLeft < 2000) {
         reject("Error: you don't have enough time to lift weights");
       } else {
-        resolve(timeLeft - 2000);
         console.log('done lifting weights');
+        resolve(timeLeft - 2000);
       }
     }, 2000);
   });
