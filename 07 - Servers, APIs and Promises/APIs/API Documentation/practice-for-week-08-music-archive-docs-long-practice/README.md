@@ -130,7 +130,7 @@ Response components:
 Request components:
 
 - Method: POST
-- URL: /artist
+- URL: /artists
 - Headers:
   - Content-Type: application/json
 - Body: information about new artist
@@ -158,7 +158,7 @@ Response components:
 Request components:
 
 - Method: PUT/PATCH
-- URL: /artist/:artistId/edit
+- URL: /artists/:artistId
 - Headers:
   - Content-Type: application/json
 - Body: artist information to change
