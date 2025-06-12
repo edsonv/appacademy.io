@@ -8,10 +8,10 @@ API endpoints of a music archive server.
 Clone the practice from the [starter].
 
 To set up the server that you will test your endpoints on, run `npm install`
-inside of the __server__ folder. Please do not to look at the contents of the
-__server__ folder until you finish this project.
+inside of the **server** folder. Please do not to look at the contents of the
+**server** folder until you finish this project.
 
-To start the server, run `npm start` inside of the __server__ folder. This will
+To start the server, run `npm start` inside of the **server** folder. This will
 allow you to make requests to [http://localhost:5000] using any client (browser
 and Postman).
 
@@ -83,7 +83,7 @@ Response components:
 
 - Status code: 200
 - Headers:
-    - Content-Type: application/json
+  - Content-Type: application/json
 - Body: information about all the artists
   ```json
   [
@@ -100,166 +100,304 @@ Test this in Postman or by using `fetch` in the browser.
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /artists/:artistId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: appĺication/json
+- Body: information about single artist
+  ```json
+  {
+    "name": "Red Hot Chili Peppers",
+    "artistId": 1,
+    "albums": [
+      {
+        "name": "Stadium Arcadium",
+        "albumId": 1,
+        "artistId": 1
+      }
+    ]
+  }
+  ```
 
 ### Add an artist
 
 Request components:
 
-- Method:
-- URL:
+- Method: POST
+- URL: /artist
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: information about new artist
+  ```json
+  {
+    "name": "Santana"
+  }
+  ```
 
 Response components:
 
-- Status code:
+- Status code: 201
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: information about newly created artist
+  ```json
+  {
+    "name": "Santana",
+    "artistId": 2
+  }
+  ```
 
 ### Edit a specified artist by artistId
 
 Request components:
 
-- Method:
-- URL:
+- Method: PUT/PATCH
+- URL: /artist/:artistId/edit
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: artist information to change
+  ```json
+  {
+    "name": "The Offspring"
+  }
+  ```
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: updated artist information
+  ```json
+  {
+    "name": "The Offspring",
+    "artistId": 2
+  }
+  ```
 
 ### Delete a specified artist by artistId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: DELETE
+- URL: /artist/:artistId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: successful delete message
+  ```json
+  {
+    "message": "Sucessfully deleted"
+  }
+  ```
 
 ### Get all albums of a specific artist based on artistId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /artists/:artistId/albums
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: list of artist's album
+  ```json
+  [
+    {
+      "name": "Stadium Arcadium",
+      "albumId": 1,
+      "artistId": 1
+    }
+  ]
+  ```
 
 ### Get a specific album's details based on albumId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /albums/:albumId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: information about an album
+  ```json
+  {
+    "name": "Stadium Arcadium",
+    "albumId": 1,
+    "artistId": 1,
+    "artist": {
+      "name": "Red Hot Chili Peppers",
+      "artistId": 1
+    },
+    "songs": [
+      {
+        "name": "Dani California",
+        "lyrics": "...",
+        "trackNumber": 1,
+        "songId": 1,
+        "createdAt": "2025-06-12T16:12:50.000Z",
+        "updatedAt": "2025-06-12T16:12:50.000Z",
+        "albumId": 1
+      }
+    ]
+  }
+  ```
 
 ### Add an album to a specific artist based on artistId
 
 Request components:
 
-- Method:
-- URL:
+- Method: POST
+- URL: /artists/:artistId/albums
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: new album information
+  ```json
+  {
+    "name": "Americana"
+  }
+  ```
 
 Response components:
 
-- Status code:
+- Status code: 201
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: information about newly created album
+  ```json
+  {
+    "name": "Americana",
+    "albumId": 2,
+    "artistId": 1
+  }
+  ```
 
 ### Edit a specified album by albumId
 
 Request components:
 
-- Method:
-- URL:
+- Method: PUT/PATCH
+- URL: /albums/:albumId
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: information to change
+  ```json
+  {
+    "name": "Ixnay for the hombre"
+  }
+  ```
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: updated album info
+  ```json
+  {
+    "name": "Ixnay for the hombre",
+    "albumId": 3,
+    "artistId": 2,
+    "updatedAt": "2025-06-12T16:24:36.244Z"
+  }
+  ```
 
 ### Delete a specified album by albumId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: DELETE
+- URL: /albums/:albumId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: successful message
+  ```json
+  {
+    "message": "Sucessfully deleted"
+  }
+  ```
 
 ### Get all songs of a specific artist based on artistId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /artists/:artistId/songs
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: list of songs
+  ```json
+  [
+    {
+      "name": "Dani California",
+      "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+      "trackNumber": 1,
+      "songId": 1,
+      "albumId": 1
+    }
+  ]
+  ```
 
 ### Get all songs of a specific album based on albumId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /albums/:albumId/songs
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body:list of album's songs
+  ```json
+  [
+    {
+      "name": "Dani California",
+      "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+      "trackNumber": 1,
+      "songId": 1,
+      "albumId": 1
+    }
+  ]
+  ```
 
 ### Get all songs of a specified trackNumber
 
@@ -277,76 +415,154 @@ constrained by for this endpoint?
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /trackNumbers/:trackNumber/songs
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: track information
+  ```json
+  [
+    {
+      "name": "Dani California",
+      "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+      "trackNumber": 1,
+      "songId": 1,
+      "albumId": 1
+    }
+  ]
+  ```
 
 ### Get a specific song's details based on songId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /songs/:songId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: song information
+  ```json
+  {
+    "name": "Dani California",
+    "lyrics": "Getting born in the state of Mississippi\nPapa was a copper, and her mama was a hippy\nIn Alabama she would swing a hammer\nPrice you got to pay when you break the panorama\nShe never knew that there was anything more than poor\nWhat in the world does your company take me for?\nBlack bandanna, sweet Louisiana\nRobbing on a bank in the state of Indiana\nShe's a runner\nRebel, and a stunner\nOn her merry way saying baby, watcha gonna?\nLooking down the barrel of a hot metal forty-five\nJust another way to survive\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nShe's a lover, baby, and a fighter\nShould've seen it coming when I got a little brighter\nWith a name like Dani California\nDay was gonna come when I was gonna mourn ya\nA little loaded, she was stealing another breath\nI love my baby to death\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nWho knew the other side of you?\nWho knew that others died to prove?\nToo true to say goodbye to you\nToo true to say, say, say\nPushed the fader, gifted animator\nOne for the now, and eleven for the later\nNever made it up to Minnesota\nNorth Dakota man\nWasn't gunnin' for the quota\nDown in the Badlands she was saving the best for last\nIt only hurts when I laugh\nGone too fast\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah\nCalifornia, rest in peace\nSimultaneous release\nCalifornia, show your teeth\nShe's my priestess\nI'm your priest\nYeah, yeah, yeah",
+    "trackNumber": 1,
+    "songId": 1,
+    "albumId": 1,
+    "album": {
+      "name": "Stadium Arcadium",
+      "albumId": 1,
+      "artistId": 1
+    },
+    "artist": {
+      "name": "Red Hot Chili Peppers",
+      "artistId": 1
+    }
+  }
+  ```
 
 ### Add a song to a specific album based on albumId
 
 Request components:
 
-- Method:
-- URL:
+- Method: POST
+- URL: /albums/:albumsId/songs
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: new song info
+  ```json
+  {
+    "name": "Stadium Arcadium",
+    "lyrics": "Bells around St. Petersburg when I saw you\\nI hope I get what you deserve\\nAnd this is where I find—\\nSmoke surrounds your perfect face and I'm falling\\nPushing a broom out into space\\nAnd this where I find a way\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAlone inside my forest room and it's storming\\nI never thought I'd be in bloom, but this is where I start\\n(Derelict days, and the stereo plays for the all night crowd that it cannot phase)\\nAnd I'm calling\\n(Tedious weeds that the media breeds, but the animal gets what the animal needs)\\nAnd I'm sorry\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAnd this is where I find\\n\\nRays of dust that wrap around your citizen\\nKind enough to disavow, and this is where I stand\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell I'm forming and I'm warming (Warming to you)\\nTo you",
+    "trackNumber": 4
+  }
+  ```
 
 Response components:
 
-- Status code:
+- Status code: 201
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: new added song details
+  ```json
+  {
+    "name": "Stadium Arcadium",
+    "lyrics": "Bells around St. Petersburg when I saw you\\nI hope I get what you deserve\\nAnd this is where I find—\\nSmoke surrounds your perfect face and I'm falling\\nPushing a broom out into space\\nAnd this where I find a way\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAlone inside my forest room and it's storming\\nI never thought I'd be in bloom, but this is where I start\\n(Derelict days, and the stereo plays for the all night crowd that it cannot phase)\\nAnd I'm calling\\n(Tedious weeds that the media breeds, but the animal gets what the animal needs)\\nAnd I'm sorry\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAnd this is where I find\\n\\nRays of dust that wrap around your citizen\\nKind enough to disavow, and this is where I stand\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell I'm forming and I'm warming (Warming to you)\\nTo you",
+    "trackNumber": 4,
+    "songId": 2,
+    "albumId": 1
+  }
+  ```
 
 ### Edit a specified song by songId
 
 Request components:
 
-- Method:
-- URL:
+- Method: PUT/PATCH
+- URL: /songs/:songId
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: song information to modify
+  ```json
+  {
+    "name": "Stadium Arcadium",
+    "lyrics": "Bells around St. Petersburg when I saw you\\nI hope I get what you deserve\\nAnd this is where I find—\\nSmoke surrounds your perfect face and I'm falling\\nPushing a broom out into space\\nAnd this where I find a way\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAlone inside my forest room and it's storming\\nI never thought I'd be in bloom, but this is where I start\\n(Derelict days, and the stereo plays for the all night crowd that it cannot phase)\\nAnd I'm calling\\n(Tedious weeds that the media breeds, but the animal gets what the animal needs)\\nAnd I'm sorry\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAnd this is where I find\\n\\nRays of dust that wrap around your citizen\\nKind enough to disavow, and this is where I stand\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell I'm forming and I'm warming (Warming to you)\\nTo you.",
+    "trackNumber": 4
+  }
+  ```
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: modified song
+  ```json
+  {
+    "name": "Stadium Arcadium",
+    "lyrics": "Bells around St. Petersburg when I saw you\\nI hope I get what you deserve\\nAnd this is where I find—\\nSmoke surrounds your perfect face and I'm falling\\nPushing a broom out into space\\nAnd this where I find a way\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAlone inside my forest room and it's storming\\nI never thought I'd be in bloom, but this is where I start\\n(Derelict days, and the stereo plays for the all night crowd that it cannot phase)\\nAnd I'm calling\\n(Tedious weeds that the media breeds, but the animal gets what the animal needs)\\nAnd I'm sorry\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking now\\n\\nAnd this is where I find\\n\\nRays of dust that wrap around your citizen\\nKind enough to disavow, and this is where I stand\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell, I'm forming and I'm warming (Warming to you)\\nPushing myself and, no, I don't mind asking\\n\\nThe Stadium Arcadium\\nA mirror to the moon (Mirror to the moon)\\nWell, I'm forming and I'm warming (Warming to you)\\nState of the art until the clouds come crashing\\nStranger things have happened\\nBoth before and after noon (Before and after noon)\\nWell I'm forming and I'm warming (Warming to you)\\nTo you.",
+    "trackNumber": 4,
+    "songId": 2,
+    "albumId": 1,
+    "updatedAt": "2025-06-12T18:08:29.476Z"
+  }
+  ```
 
 ### Delete a specified song by songId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: DELETE
+- URL: /songs/:songId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: successful message
+  ```json
+  {
+    "message": "Sucessfully deleted"
+  }
+  ```
 
 [http://localhost:5000]: http://localhost:5000
 [starter]: https://github.com/appacademy/practice-for-week-08-music-archive-docs-long-practice
+
+```
+
+```
