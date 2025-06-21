@@ -47,3 +47,14 @@ docker container run --name alpine --net AppAcademy alpine nslookup elastic
 docker run -it --rm --net AppAcademy --name manager alpine/curl sh
 
 while true; do curl -s elastic:9200; sleep 1; done
+
+docker container run --rm --name DogsRgood -d nginx
+
+docker container run --rm --name mount_volume_test --mount type=bind,source="$(pwd)"/rad,target=/rad -d nginx
+
+docker container run --rm -d --mount source=psql-data,target=/var/lisb/postgresql/data --name postgres postgres:9.6.1
+
+docker container exec -it postgres psql -U postgres
+docker container stop postgres
+
+docker container run --rm -d --mount source=psql-data,target=/var/lisb/postgresql/data --name postgres postgres:9.6.2
