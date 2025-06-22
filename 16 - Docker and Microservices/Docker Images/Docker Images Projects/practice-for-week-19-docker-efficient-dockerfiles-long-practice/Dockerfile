@@ -1,11 +1,13 @@
-FROM ubuntu
+FROM node:10-alpine
 
-ADD . /app
 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y npm nodejs
-RUN apt-get install -y openssh-server nginx
-RUN cd /app && npm install
+WORKDIR /app
+COPY package.json package-lock.json ./
 
-CMD sshd & cd /app && npm start
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
