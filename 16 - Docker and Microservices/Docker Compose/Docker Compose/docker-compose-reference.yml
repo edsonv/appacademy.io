@@ -1,0 +1,10 @@
+# If no version is specified, then version 1.0 is assumed.
+# Recommend version 2 at the minimum version: '3.1'
+services: # Will start up containers (is the same as using docker container run).
+servicename: # Friendly name (postgres, node, etc.), also the DNS name inside your network.
+image: # Image this service will use
+command: # Optional, will replace the default CMD specified by the image
+environment: # Optional, same as -e in docker container run
+volumes: # Optional, same as -v in docker container run psql:
+servicename2:
+  volumes: # Optional, same as docker volume create networks: # Optional, same as docker network create
