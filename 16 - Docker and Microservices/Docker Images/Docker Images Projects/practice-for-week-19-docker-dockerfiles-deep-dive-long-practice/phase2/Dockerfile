@@ -33,3 +33,5 @@ COPY ./* /usr/src/app/
 #   Here is the documentation for CMD if you need a reminder:
 #   https://docs.docker.com/engine/reference/builder/#cmd
 CMD [ "/sbin/tini", "--", "node","app.js" ]
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "echo", '"Container is running ok!"' ]
