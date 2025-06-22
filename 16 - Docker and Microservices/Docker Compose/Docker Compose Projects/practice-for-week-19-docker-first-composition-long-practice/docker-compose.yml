@@ -1,0 +1,7 @@
+services:
+  nginx:
+    build: .
+    image: 'edsonv/first-composition'
+    container_name: 'server'
+    ports:
+      - 8000:80
