@@ -1,7 +1,7 @@
 # Project: Run an express app in a Docker container
 
 # Step 1: Use the 'node' official image (a recent version with an alpine base)
-FROM node:22.14.0-alpine 
+FROM node:22.14.0-alpine
 
 # Step 2: Look in the app.js to determine which port to expose
 EXPOSE 8081
