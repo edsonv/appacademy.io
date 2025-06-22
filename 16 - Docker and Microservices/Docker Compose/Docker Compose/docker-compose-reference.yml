@@ -1,5 +1,6 @@
 # If no version is specified, then version 1.0 is assumed.
-# Recommend version 2 at the minimum version: '3.1'
+# Recommend version 2 at the minimum
+version: '3.1'
 services: # Will start up containers (is the same as using docker container run).
 servicename: # Friendly name (postgres, node, etc.), also the DNS name inside your network.
 image: # Image this service will use
