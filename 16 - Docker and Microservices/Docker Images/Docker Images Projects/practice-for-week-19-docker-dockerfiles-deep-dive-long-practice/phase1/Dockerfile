@@ -8,7 +8,7 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 
 # Step 3: Copy in the file or files or folder!
-COPY index.html /usr/share/nginx/html/
+COPY index.html .
 
 # BONUS: add in a healthcheck!
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "echo", '"Container is running ok!"' ]
