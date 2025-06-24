@@ -1,0 +1,45 @@
+services:
+  app:
+    build: .
+    image: nodeapp
+    ports:
+      - 3000:${PORT}
+    environment:
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_HOST=${DB_HOST}
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    command: sh -c './wait-for ${DB_HOST}:5432 -- npm run build-start'
+    networks:
+      - pgnodeapp
+
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    networks:
+      pgnodeapp:
+        aliases:
+          - postgres
+    # healthcheck:
+    #   test: ['CMD-SHELL', 'pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}']
+    #   interval: 10s
+    #   retries: 5
+    #   start_period: 30s
+    #   timeout: 10s
+
+volumes:
+  postgres-db:
+
+networks:
+  pgnodeapp:
+    driver: bridge
