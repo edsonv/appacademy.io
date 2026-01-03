@@ -1,8 +1,5 @@
-.active {
-  font-weight: bold;
-}
-
-.links {
+.arts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }

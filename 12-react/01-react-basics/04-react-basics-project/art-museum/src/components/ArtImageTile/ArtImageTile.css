@@ -1,0 +1,7 @@
+img {
+  max-width: 30vw;
+}
+.art-tile {
+  height: fit-content;
+  width: fit-content;
+}

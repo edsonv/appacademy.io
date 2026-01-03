@@ -4,15 +4,19 @@ import "./GalleryNavigation.css";
 const GalleryNavigation = ({ galleries }) => {
   return (
     <nav>
-      <h1>Galleries</h1>
+      <div>
+        <h1>Galleries</h1>
+      </div>
       <NavLink to="/" exact>
         Home
       </NavLink>
-      {galleries.map((gallery) => (
-        <NavLink to={`/galleries/${gallery.id}`} key={gallery.id}>
-          {gallery.name}
-        </NavLink>
-      ))}
+      <div className="links">
+        {galleries.map((gallery) => (
+          <NavLink to={`/galleries/${gallery.id}`} key={gallery.id}>
+            {gallery.name}
+          </NavLink>
+        ))}
+      </div>
     </nav>
   );
 };
