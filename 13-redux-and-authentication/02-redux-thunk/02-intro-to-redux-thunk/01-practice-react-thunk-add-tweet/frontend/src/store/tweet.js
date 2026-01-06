@@ -1,6 +1,7 @@
 // constant to avoid debugging typos
 const GET_ALL_TWEETS = "tweet/getAllTweets";
 const CREATE_TWEET = "tweet/createTweet";
+
 //regular action creator
 const loadTweets = (tweets) => {
   return {
@@ -8,6 +9,7 @@ const loadTweets = (tweets) => {
     tweets,
   };
 };
+
 const createTweet = (tweet) => {
   return {
     type: CREATE_TWEET,
@@ -27,6 +29,7 @@ export const getAllTweets = () => async (dispatch) => {
   }
 };
 
+// Thunk action creator
 export const saveTweet = (tweet) => async (dispatch) => {
   const response = await fetch("/api/tweets", {
     method: "POST",
