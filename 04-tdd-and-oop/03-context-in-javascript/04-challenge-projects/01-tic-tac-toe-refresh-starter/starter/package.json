@@ -1,5 +1,5 @@
 {
-  "name": "connect-four",
+  "name": "tic-tac-toe",
   "version": "1.0.0",
   "description": "",
   "main": "game.js",

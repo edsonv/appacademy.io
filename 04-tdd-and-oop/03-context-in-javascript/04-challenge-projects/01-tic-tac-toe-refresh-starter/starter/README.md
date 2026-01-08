@@ -1,14 +1,21 @@
-# Connect Four
+# Tic-Tac-Toe
 
-In this project, you will create a command-line Connect Four game. To do this,
-you will fill out two classes, `cursor.js` and `connect-four.js`. `cursor.js`
-contains logic for navigating around the board while `connect-four.js`
-contains the game logic.
+In this project, you will create a command-line Tic-Tac-Toe game. To do this,
+you will fill out two classes, `cursor.js` and `ttt.js`. `cursor.js` contains
+logic for navigating around the board while `ttt.js` contains the game logic.
 
 To render the game, you have been given a `Screen` API that handles
 command-line rendering. You do not need to understand how the code in `Screen`
-works but you will need to make use of the commands provided. The API is
-documented below. Try out the commands to see how they work.
+works but you will need to make use of the commands provided.  You may be
+tempted to spend a large amount of time digging through the API code under
+the reasoning that you want to understand all of the project to best be able to add
+to it.  There are times where it is necessary to do this, but on most projects, there
+simply isn't time or need.  Think of this as an opportunity to practice your time
+management skills.  Consider the API as a black box.  Review the documentation
+thoroughly to make sure that you understand the inputs and outputs, but don't
+peek inside unless you have extra time after completing the project.
+
+The API is documented below. Try out the commands to see how they work.
 
 To process keypresses, you will need to load `Command` objects into the Screen
 API using `Screen.addCommand`. This function takes a `key` which triggers the
@@ -28,16 +35,14 @@ the game ends in a tie.
 
 1. Fill out movement logic in `class/cursor.js` until `mocha
    test/cursor-spec.js` passes all tests
-2. Fill out game logic in `class/connect-four.js` until `mocha
-   test/connect-four-spec.js` passes all tests
-3. Create commands for cursor movement in `connect-four.js` that call
-   `cursor.left`, and `cursor.right`
+2. Fill out game logic in `class/ttt.js` until `mocha test/ttt-spec.js` passes
+   all tests
+3. Create commands for cursor movement in `ttt.js` that call `cursor.up`,
+   `cursor.down`, `cursor.left`, and `cursor.right`
 4. Use `setBackgroundColor` and `resetBackgroundColor` in `cursor.js` to
    highlight the cursor's current position on the grid
-5. Create a command in `connect-four.js` that places a move in the given
-   column
-6. Fill out the game state in `connect-four.js` that checks for wins after
-   each move
+5. Create a command in `ttt.js` that places a move at the cursor's position
+6. Fill out the game state in `ttt.js` that checks for wins after each move
 
 ## Screen API
 
@@ -97,4 +102,3 @@ Valid colors are:
 
 * `Screen.setMessage(msg)` takes in a string to be printed below the grid each
   time it is rendered.
-
