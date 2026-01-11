@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Pirata+One&display=swap");
+
+:root {
+  --bg-dark: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --accent-primary: #f43f5e;
+  --accent-secondary: #fbbf24;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.hero-page {
+  background-image: linear-gradient(
+      rgba(15, 23, 42, 0.8),
+      rgba(15, 23, 42, 0.8)
+    ),
+    url("/public/images/hero.png");
+}
+
+body.room-page {
+  background-image: linear-gradient(
+      rgba(15, 23, 42, 0.9),
+      rgba(15, 23, 42, 0.9)
+    ),
+    url("/public/images/room.png");
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Pirata One", cursive;
+  letter-spacing: 2px;
+  color: var(--accent-secondary);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--accent-primary);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.container {
+  max-width: 800px;
+  width: 90%;
+  padding: 2.5rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+input,
+select,
+button {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+button {
+  background: var(--accent-primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background: #fb7185;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.4);
+}
+
+.inventory,
+.room-items,
+.directions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.actions button[type="submit"] {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.actions button[type="submit"]:hover {
+  background: var(--accent-secondary);
+  color: black;
+}
+
+.directions ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.directions a {
+  display: block;
+  text-align: center;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid var(--glass-border);
+}
+
+.directions a:hover {
+  background: var(--accent-secondary);
+  color: black;
+  transform: scale(1.05);
+}
+
+.room-page.light-up {
+  background-image: linear-gradient(
+      rgba(15, 23, 42, 0.4),
+      rgba(15, 23, 42, 0.4)
+    ),
+    url("/public/images/room.png");
+}
+
+.room-page.light-up .container {
+  background: rgba(30, 41, 59, 0.85);
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
+}
+
+.item-weapon {
+  color: #ef4444; /* Red hint for weapons */
+  font-weight: 500;
+}
+
+.error-message {
+  color: var(--accent-primary);
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}

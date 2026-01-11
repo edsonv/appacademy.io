@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Error</title>
-</head>
-<body>
-  <h1>#{errorMessage}</h1>
-  
-  <a href="/rooms/#{roomId}">Go Back to Current Room</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body class="room-page #{bodyClass}">
+    <div class="container" style="text-align: center">
+      <h1 class="error-message">Oops!</h1>
+      <h2 style="color: var(--text-main); border: none; margin-bottom: 2rem">
+        #{errorMessage}
+      </h2>
+
+      <div class="directions">
+        <a href="/rooms/#{roomId}" style="display: initial; padding: 1rem 2rem"
+          >Go Back to Current Room</a
+        >
+      </div>
+    </div>
+  </body>
 </html>

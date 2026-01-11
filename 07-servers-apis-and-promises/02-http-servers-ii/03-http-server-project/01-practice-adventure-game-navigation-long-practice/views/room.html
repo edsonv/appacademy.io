@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>#{roomName}</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>#{roomName}</title>
-</head>
+  <body class="room-page #{bodyClass}">
+    <div class="container">
+      <h1>Room name: #{roomName}</h1>
 
-<body>
-  <h1>Room name: #{roomName}</h1>
-  <div class="inventory">
-    <h2>Inventory</h2>
-    #{inventory}
-  </div>
-  <div class="room-items">
-    <h2>Items in the Room</h2>
-    #{roomItems}
-  </div>
-  <div class="directions">
-    <h2>Exits</h2>
-    #{exits}
-  </div>
-</body>
-
+      <div class="inventory">
+        <h2>Inventory</h2>
+        #{inventory}
+      </div>
+      <div class="room-items">
+        <h2>Items in the Room</h2>
+        #{roomItems}
+      </div>
+      <div class="directions">
+        <h2>Exits</h2>
+        #{exits}
+      </div>
+    </div>
+  </body>
 </html>
